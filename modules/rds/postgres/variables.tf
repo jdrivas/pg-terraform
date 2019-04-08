@@ -28,6 +28,11 @@ variable "instance_class" {
   description = "EC2 Instance type to use for database"
 }
 
+variable "multi_az" {
+  default = true
+  description = "Set up a multi-az standby for failover"
+}
+
 variable "postgres_version" {
   default = "11.1"
   description = "Version of postgres to instance"
@@ -43,15 +48,16 @@ variable "db_subgroup_name" {
   description = "Leave blank to assign a terraform generated unique name"
 }
 
-variable "db_subnet_ids" {
-  default = []
-  description = "Leave blank to assign to default vpc"
-}
-
 variable "vpc_id" {
   default = ""
-  description = "The RDS instances attaches to this VPC"
+  description = "The RDS instances attaches to this VPC, leave blank to use the default VPC"
 }
+
+variable "db_subnet_ids" {
+  default = []
+  description = "Subnets to attach to, this can't be left blank."
+}
+
 
 variable "ingress_cidr_blocks" {
   default = ["0.0.0.0/0"] 

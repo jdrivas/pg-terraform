@@ -45,6 +45,7 @@ resource "aws_db_instance" "default" {
   engine = "postgres"
   engine_version = "${var.postgres_version}"
   instance_class = "${var.instance_class}"
+  multi_az = "${var.multi_az}"
   username = "${var.username}"
   password = "${var.password}"
   db_subnet_group_name = "${aws_db_subnet_group.default.name}"
